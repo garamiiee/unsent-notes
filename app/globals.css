@@ -157,3 +157,16 @@ main { max-width:1240px; margin:auto; padding:48px 40px 50px; min-height:calc(10
 .step-themes .theme-card { min-height: 280px; }
 .step-themes .theme-copy { flex: 0; }
 @media(max-width:700px) { .step-themes .theme-card { min-height: 120px; } }
+
+.theme-photo { display: block; width: 100%; height: 170px; object-fit: contain; }
+.step-themes .theme-icon { display: none; }
+.step-themes .theme-card { background: white; }
+@media(min-width:701px) {
+ .step-themes .theme-card:nth-child(n) { background: #fff; border: 1px solid #d5d3d0; box-shadow: none; min-height: 325px; padding: 20px; }
+ .step-themes .theme-card.selected { border-color: #858d4e; box-shadow: 0 0 0 1px #858d4e; background: #fefff8; }
+ .theme-photo { height: 215px; }
+ .send-screen > .sending-icon { display: block; }
+ .step-themes .theme-copy { width: 100%; }
+ .step-themes .theme-copy small { font-size: 13px; line-height: 1.7; color: #737168; }
+}
+@media(max-width:700px) { .theme-photo { height: 145px; } .step-themes .theme-card { min-height: 240px; } }
