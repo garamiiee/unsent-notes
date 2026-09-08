@@ -10,12 +10,12 @@ const themes = [
   { id: 'report', name: '보고서', en: 'REPORT', caption: '참아온 마음을 보고드립니다', icon: PenLine, action: '보고서 제출하기', steps: ['보고서 최종 검토 중', '결재 요청 중', '보고서 제출 중'] },
 ] as const;
 const people = [
-  { name: '상사', emoji: '💼', detail: '퇴근하고 싶은 나에게', hint: '부장님만 집 있나요. 저도 퇴근하고 싶어요.', reply: '내가 퇴근 시간을 너무 신경 못 썼네요. 미안해요. 남은 건 내일 하고 오늘은 먼저 들어가요.' },
-  { name: '교수님', emoji: '🎓', detail: '학점보다 소중한 진심', hint: '교수님, 과제는 하나인데 왜 제 주말은 전부 사라지나요?', reply: '과제 부담이 컸겠군요. 그 부분은 제가 충분히 고려하지 못했습니다. 제출 기한은 조정하겠습니다.' },
-  { name: '팀플 빌런 팀원', emoji: '😈', detail: '우리, 같은 팀 맞죠?', hint: '이름 말고 내용도 보고서에 남겨주면 안 될까?', reply: '맞아 내가 너무 안 했어. 미안. 남은 자료 조사랑 발표 정리는 내가 할게. 오늘 안에 올릴게.' },
-  { name: '클라이언트', emoji: '🤝', detail: '최종_진짜최종의 끝', hint: '간단한 수정이라고 하셨지만 제 밤은 간단하지 않아요.', reply: '말씀 주신 부분 이해했습니다. 수정 요청을 여러 번 드려 죄송합니다. 내부 의견부터 정리해서 한 번에 전달드리겠습니다.' },
-  { name: '전 연인', emoji: '🥀', detail: '이제는 보내줄 마음', hint: '그때는 못 했던 말인데, 나도 참 많이 애썼어.', reply: '응, 읽었어. 그때 내가 네 입장을 너무 안 생각했네. 변명 안 할게. 미안했어.' },
-  { name: '친구', emoji: '🧃', detail: '가까워서 못 했던 말', hint: '인스타 올리기 전에 제발 카톡 먼저 확인해라ㅠㅠ', reply: '아 맞네… 내가 답장 너무 미뤘다. 미안ㅠㅠ 봐놓고 까먹은 거 맞아. 앞으로 먼저 답할게.' },
+  { name: '상사', emoji: '💼', detail: '퇴근하고 싶은 나에게', hint: '부장님만 집 있나요. 저도 퇴근하고 싶어요.', reply: '내가 너무 당연하게 일을 맡기고, 퇴근 시간도 제대로 챙기지 못했네요. 미안해요. 말 꺼내기까지 많이 참았을 텐데 내가 먼저 알아챘어야 했어요. 남은 일은 내가 정리할게요. 오늘은 먼저 들어가요.' },
+  { name: '교수님', emoji: '🎓', detail: '학점보다 소중한 진심', hint: '교수님, 과제는 하나인데 왜 제 주말은 전부 사라지나요?', reply: '말씀 읽었습니다. 학생이 감당해야 하는 부담을 제가 충분히 살피지 못했습니다. 힘든 상황을 직접 말씀하시게 해서 미안합니다. 과제 분량과 기한을 다시 검토하고 조정하겠습니다.' },
+  { name: '팀플 빌런 팀원', emoji: '😈', detail: '우리, 같은 팀 맞죠?', hint: '이름 말고 내용도 보고서에 남겨주면 안 될까?', reply: '미안해. 내가 할 일을 계속 미뤄서 네가 다 떠안게 했어. 바빴다는 말로 넘길 일이 아닌데 너무 쉽게 생각했어. 남은 자료랑 발표 정리는 내가 맡을게. 또 네가 재촉하게 만들지 않을게.' },
+  { name: '클라이언트', emoji: '🤝', detail: '최종_진짜최종의 끝', hint: '간단한 수정이라고 하셨지만 제 밤은 간단하지 않아요.', reply: '정말 죄송합니다. 저희가 의견을 제대로 정리하지 않고 수정을 반복 요청드려 부담을 드렸습니다. 작업 시간과 수고를 충분히 고려하지 못했습니다. 추가 요청은 내부에서 먼저 정리하고, 일정과 비용도 다시 협의드리겠습니다.' },
+  { name: '전 연인', emoji: '🥀', detail: '이제는 보내줄 마음', hint: '그때는 못 했던 말인데, 나도 참 많이 애썼어.', reply: '미안해. 그때 네가 얼마나 힘들었을지 생각하기보다 내 입장부터 말했어. 네가 이렇게 말할 때까지 제대로 사과도 안 했네. 내가 상처 준 건 맞아. 지금이라도 변명 없이 사과하고 싶어. 답장 안 해도 괜찮아.' },
+  { name: '친구', emoji: '🧃', detail: '가까워서 못 했던 말', hint: '인스타 올리기 전에 제발 카톡 먼저 확인해라ㅠㅠ', reply: '미안해 진짜. 네 연락을 너무 편하게 생각했어. 기다리는 너는 신경 쓰였을 텐데 내가 아무렇지 않게 넘겼네. 서운할 만했어. 다음엔 답 늦어지면 한마디라도 먼저 남길게.' },
 ];
 
 type Entry = { id: string; theme: string; person: string; message: string; reply: string; date: string };
@@ -70,7 +70,7 @@ export default function Home() {
   useEffect(() => {
     if (!loaded) return;
     try { localStorage.setItem(KEY, JSON.stringify(entries)); }
-    catch { setNotice('브라우저 저장 공간을 사용할 수 없어요. 결과를 텍스트로 저장해 주세요.'); }
+    catch { setNotice('브라우저 저장 공간을 사용할 수 없어요. 기록이 저장되지 않을 수 있어요.'); }
   }, [entries, loaded]);
   useEffect(() => {
     if (stage !== 'sending') return;
@@ -85,13 +85,9 @@ export default function Home() {
   useEffect(() => { if (view === 'write') { window.scrollTo({ top: 0 }); headingRef.current?.focus({ preventScroll: true }); } }, [step, stage, view]);
   function send() { if (!loaded || !message.trim() || sending.current || stage !== 'compose') return; sending.current = true; setProgress(0); setShowReply(false); setStage('sending'); }
   function reset() { setStep(0); setMessage(''); setResult(null); setShowReply(false); setStage('compose'); setView('write'); }
-  function save(e: Entry) {
-    const blob = new Blob([`전하지 못한 진심 · 가상 전달 기록\n${e.person}에게\n${new Date(e.date).toLocaleString('ko-KR')}\n\n${e.message}\n\n가상 반응\n${e.reply}\n\n실제로 발송되지 않은 메시지입니다.`], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = '전하지-못한-진심.txt'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }
   return <div className="app-shell">
-    <header className="topbar"><a className="brand" href="/" aria-label="전하지 못한 진심 홈"><span className="brand-icon"><Send size={21} /></span><span>전하지 못한 진심<small>THE UNSENT CLUB</small></span></a><nav aria-label="메인 메뉴"><button className={view === 'write' ? 'active' : ''} onClick={() => setView('write')} disabled={stage === 'sending'}><PenLine size={16} />진심 보내기</button><button className={view === 'history' ? 'active' : ''} onClick={() => setView('history')} disabled={stage === 'sending'}><History size={16} />마음 보관함<span className="count">{entries.length}</span></button></nav></header>
-    <main>{view === 'history' ? <section className="history-page"><h1>보관함</h1><p className="intro">기록은 이 브라우저에 저장됩니다.</p><button className="text-button" onClick={() => setView('write')}><ArrowLeft size={16} />작성 화면으로</button>{entries.length === 0 ? <div className="empty"><Mail size={42} /><h2>저장된 기록이 없습니다</h2><button className="primary" onClick={reset}>작성하기 <ArrowRight size={17} /></button></div> : <div className="history-list">{entries.map(e => <article className="history-card" key={e.id}><div className="history-meta"><span>{themes.find(x => x.id === e.theme)?.name} · {e.person}에게</span><time>{new Date(e.date).toLocaleDateString('ko-KR')}</time></div><p className="saved-message">{e.message}</p><details><summary>가상 반응 보기</summary><p>{e.reply}</p></details><div className="history-actions"><button onClick={() => save(e)}>텍스트 저장</button><button aria-label={`${e.person}에게 보낸 기록 삭제`} onClick={() => setEntries(prev => prev.filter(x => x.id !== e.id))}><Trash2 size={15} />삭제</button></div></article>)}</div>}</section> : <>
+    <header className="topbar"><a className="brand" href="/" aria-label="전하지 못한 진심 홈"><span className="brand-icon"><Send size={21} /></span><span>전하지 못한 진심<small>THE UNSENT CLUB</small></span></a><nav aria-label="메인 메뉴"><button className={view === 'history' ? 'active' : ''} onClick={() => setView('history')} disabled={stage === 'sending'}><History size={16} />마음 보관함<span className="count">{entries.length}</span></button></nav></header>
+    <main>{view === 'history' ? <section className="history-page"><h1>보관함</h1><p className="intro">기록은 이 브라우저에 저장됩니다.</p><button className="text-button" onClick={() => setView('write')}><ArrowLeft size={16} />작성 화면으로</button>{entries.length === 0 ? <div className="empty"><Mail size={42} /><h2>저장된 기록이 없습니다</h2><button className="primary" onClick={reset}>작성하기 <ArrowRight size={17} /></button></div> : <div className="history-list">{entries.map(e => <article className="history-card" key={e.id}><div className="history-meta"><span>{themes.find(x => x.id === e.theme)?.name} · {e.person}에게</span><time>{new Date(e.date).toLocaleDateString('ko-KR')}</time></div><p className="saved-message">{e.message}</p><details><summary>가상 반응 보기</summary><p>{e.reply}</p></details><div className="history-actions"><button aria-label={`${e.person}에게 보낸 기록 삭제`} onClick={() => setEntries(prev => prev.filter(x => x.id !== e.id))}><Trash2 size={15} />삭제</button></div></article>)}</div>}</section> : <>
       <div className="journey" data-screen={stage === 'compose' ? step : stage}>
         <ol className="journey-progress" aria-label="전달 단계">{['전달 방식', '상대 선택', '진심 작성', '전달 중', '전달 완료'].map((label, i) => { const active = stage === 'sending' ? 3 : stage === 'done' ? 4 : step; return <li key={label} aria-current={i === active ? 'step' : undefined} className={i <= active ? 'reached' : ''}><span>{i < active ? <Check size={13} /> : i + 1}</span><b>{label}</b></li>; })}</ol>
         {stage === 'compose' && <>
@@ -117,7 +113,7 @@ export default function Home() {
           <div className="step-actions"><button className="secondary" onClick={() => setStep(n => n - 1)} disabled={step === 0}><ArrowLeft size={16} />이전</button>{step === 0 && <span><LockKeyhole size={13} />실제 상대에게 전송되지 않습니다.</span>}{step < 2 ? <button className="primary" onClick={() => setStep(n => n + 1)}>다음 <ArrowRight size={17} /></button> : <button className={`primary ${theme === 'mail' ? 'mail-primary' : ''}`} onClick={send} disabled={!loaded || !message.trim()}>{t.action}<Send size={17} /></button>}</div>
         </>}
         {stage === 'sending' && <section className={`send-screen send-screen-${theme}`} role="status"><div className={`sending-icon sending-${theme}`}><Icon size={56} /></div>{theme === 'chat' ? <div className="sent-bubble"><span>{progress < 2 ? '1' : '읽음'}</span><p>{message}</p></div> : <div className={`transit-document transit-${theme}`}><strong>{theme === 'mail' ? subject : theme === 'official' ? '공문 접수' : '보고서 결재'}</strong><p>{message}</p>{progress === 2 && <b className="received-stamp">{theme === 'mail' ? '발송 완료' : '접수 완료'}</b>}</div>}<h1>{t.steps[progress]}</h1><div className="progress-dots">{t.steps.map((_, i) => <i key={i} className={i <= progress ? 'filled' : ''} />)}</div></section>}
-        {stage === 'done' && result && <section className="completion standalone-completion" aria-live="polite"><div className="success-symbol"><CheckCheck size={38} /></div><h1>전달 완료</h1><div className="receipt"><div><span>TO. {result.person}</span><span>전달 완료 <Check size={13} /></span></div><blockquote>{result.message}</blockquote></div>{showReply ? <div className="reply"><span><Sparkles size={14} />답장</span><p>{result.reply}</p></div> : <button className="reaction-button" onClick={() => setShowReply(true)}><Sparkles size={16} />반응 보기</button>}<div className="result-actions"><button className="secondary" onClick={() => save(result)}>텍스트로 저장</button><button className="primary" onClick={reset}>새로 작성 <Plus size={17} /></button></div></section>}
+        {stage === 'done' && result && <section className="completion standalone-completion" aria-live="polite"><div className="success-symbol"><CheckCheck size={38} /></div><h1>전달 완료</h1><div className="receipt"><div><span>TO. {result.person}</span><span>전달 완료 <Check size={13} /></span></div><blockquote>{result.message}</blockquote></div>{showReply ? <div className="reply"><span><Sparkles size={14} />답장</span><p>{result.reply}</p></div> : <button className="reaction-button" onClick={() => setShowReply(true)}><Sparkles size={16} />반응 보기</button>}<div className="result-actions"><button className="primary" onClick={reset}>새로 작성 <Plus size={17} /></button></div></section>}
       </div></>}
       {notice && <div className="notice" role="status">{notice}<button aria-label="알림 닫기" onClick={() => setNotice('')}><X size={16} /></button></div>}</main></div>;
 }

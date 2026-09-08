@@ -176,3 +176,35 @@ main { max-width:1240px; margin:auto; padding:48px 40px 50px; min-height:calc(10
 .step-actions .primary.mail-primary { background: #0b57d0; border-color: #0b57d0; color: white; box-shadow: none; }
 .step-actions .primary.mail-primary:hover:not(:disabled) { background: #0847ae; }
 .mail-bottom { justify-content: flex-end; }
+
+/* A single violet accent across the product UI. */
+:root { --primary: #89649a; }
+.app-shell { --poster-red: #89649a; }
+.brand-icon, .eyebrow, .reaction-button, .history-meta > span { color: #795388; }
+.brand-icon { background: #eee5f2; }
+nav button.active { color: #795388; background: #eee5f2; }
+.primary { background: #89649a; }
+.primary:hover:not(:disabled) { background: #725080; }
+.primary:disabled { background: #b5a4bd; }
+.person-card.selected, .theme-card.selected { background: #f3edf6; border-color: #a58ab1; color: #795388; }
+.person-card:hover { background: #f3edf6; }
+.theme-card.selected strong, .selected .theme-icon { color: #795388; }
+.selected .theme-icon { background: #eee5f2; }
+.success-symbol { color: #795388; background: #eee5f2; }
+.reply { background: #f3edf6; }
+.reply > span { color: #795388; }
+.seal, .received-stamp { color: #795388; border-color: #795388; }
+.window-dots i:first-child { background: #b5a4bd; }
+button:focus-visible, a:focus-visible, label:has(:focus-visible) { outline-color: #a58ab1; }
+textarea:focus-visible { outline-color: #a58ab180; }
+@media(min-width:701px) {
+ .app-shell { --poster-red: #89649a; }
+ .brand small, .step-heading .eyebrow { color: #795388; }
+ .step-actions .primary, .result-actions .primary, .empty .primary { background: #89649a; border-color: #795388; }
+ .step-actions .primary:hover:not(:disabled), .result-actions .primary:hover { background: #725080; }
+ .step-themes .theme-card.selected { border-color: #a58ab1; box-shadow: 0 0 0 1px #a58ab1; background: #f7f2fa; }
+ .step-people .person-card.selected { background: #eee5f2; }
+ .step-actions .primary.mail-primary { background: #0b57d0; border-color: #0b57d0; }
+ .step-actions .primary.mail-primary:hover:not(:disabled) { background: #0847ae; }
+}
+.theme-photo[src$="official.png"] { filter: grayscale(1); }
