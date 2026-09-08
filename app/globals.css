@@ -169,7 +169,14 @@ main { max-width:1240px; margin:auto; padding:48px 40px 50px; min-height:calc(10
  .step-themes .theme-copy { width: 100%; }
  .step-themes .theme-copy small { font-size: 13px; line-height: 1.7; color: #737168; }
 }
-@media(max-width:700px) { .theme-photo { height: 145px; } .step-themes .theme-card { min-height: 240px; } }
+@media(max-width:700px) {
+ .step-themes { grid-template-columns: 1fr; gap: 14px; }
+ .step-themes .theme-card { min-height: 150px; flex-direction: row; flex-wrap: wrap; align-items: center; padding: 14px; gap: 12px; }
+ .step-themes .theme-copy { flex: 1 1 0; width: auto; min-width: 0; }
+ .step-themes .theme-copy strong, .step-themes .theme-copy small { white-space: normal; word-break: keep-all; overflow-wrap: normal; }
+ .theme-photo { width: 92px; height: 92px; flex: 0 0 92px; }
+ .step-themes .theme-preview-label { flex-basis: 100%; }
+}
 
 /* Selection remains a keyboard-accessible radio; the card carries its visual state. */
 .step-people [data-slot='radio-group-item'] { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
