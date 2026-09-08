@@ -92,3 +92,55 @@ main { max-width:1240px; margin:auto; padding:48px 40px 50px; min-height:calc(10
   .journey-progress li { padding-right: 23px; font-size: 12px; }
   .journey-progress li:not(:last-child)::after { width: 11px; right: 6px; }
 }
+
+.text-picture { display: none; }
+@media (min-width: 701px) {
+  .app-shell { background: #fffefa; --poster-ink: #37323d; --poster-red: #9a4877; --poster-pink: #f3d5ed; --poster-blue: #dceef9; --poster-green: #e6eddc; }
+  .topbar { background: #fffefa; border-bottom: 1px dashed #b9abb9; }
+  .brand-icon { background: #f3d5ed; border-style: dashed; box-shadow: none; transform: none; }
+  nav button.active { background: #f3d5ed; border: 1px dashed #947592; box-shadow: none; }
+  .journey-progress li > span { border-style: dashed; }
+  .journey-progress [aria-current] > span { background: #967caf; }
+  .step-heading .eyebrow { font-family: 'Courier New', monospace; letter-spacing: 3px; color: #96749b; }
+  .step-heading h1 { font-weight: 600; letter-spacing: -2px; }
+  .step-heading .intro { color: #817788; }
+  .step-themes { gap: 20px; padding-top: 0; }
+  .step-themes .theme-card, .step-themes .theme-card:nth-child(n) { transform: none; margin: 0; min-height: 340px; background: #fffefa; border: 1px dashed #b6a6b8; padding: 26px 18px 18px; gap: 16px; box-shadow: none; }
+  .step-themes .theme-card:nth-child(2) { background: #f4e2f5; }
+  .step-themes .theme-card:nth-child(3) { background: #eef6fb; }
+  .step-themes .theme-card:nth-child(4) { background: #f5f4e7; }
+  .step-themes .theme-card.selected { border: 1px solid #9a4877; background: #faedf6; box-shadow: 4px 4px 0 #e5cedf; }
+  .step-themes .theme-card:hover { transform: translateY(-5px); }
+  .step-themes .theme-icon { display: none; }
+  .text-picture { display: flex; flex-direction: column; align-items: center; width: 100%; color: #b16c95; user-select: none; }
+  .text-picture pre { font-family: 'Courier New', monospace; font-size: clamp(9px, .89vw, 12px); line-height: 1.2; letter-spacing: 0; white-space: pre; margin: 5px 0 9px; font-weight: 400; }
+  .theme-card:nth-child(2) .text-picture { color: #8555ad; }
+  .theme-card:nth-child(3) .text-picture { color: #669fc1; }
+  .theme-card:nth-child(4) .text-picture { color: #858255; }
+  .ascii-spark { font: 12px 'Courier New', monospace; letter-spacing: 7px; animation: ascii-spark 3s steps(2, end) infinite; }
+  .ascii-caption { font: 10px 'Courier New', monospace; letter-spacing: -.4px; white-space: nowrap; }
+  .ascii-cursor { animation: ascii-blink 1.2s steps(1,end) infinite; }
+  .step-themes .theme-copy { width: 100%; }
+  .step-themes .theme-copy strong { font-size: 21px; font-weight: 600; }
+  .step-themes .theme-copy small { color: #7c6c7e; }
+  .theme-preview-label { font-family: 'Malgun Gothic', sans-serif; }
+  .step-themes .theme-preview-label { border-top: 1px dashed #bbaabc; color: #88788b; }
+  .step-themes [data-slot='radio-group-item'][data-checked], .step-people [data-slot='radio-group-item'][data-checked] { background: #a26a95; }
+  .step-actions .primary, .result-actions .primary, .empty .primary { background: #9a638c; border-color: #73546d; box-shadow: 3px 3px 0 #e2cfe1; font-weight: 500; }
+  .step-actions .primary:hover:not(:disabled), .result-actions .primary:hover { background: #865378; }
+  .step-actions .secondary, .result-actions .secondary { border: 1px dashed #b6a6b8; }
+  .step-people .person-card:nth-child(n) { background: #fffefa; border: 1px dashed #b6a6b8; box-shadow: none; }
+  .step-people .person-card.selected { background: #f4e2f5; border-style: solid; box-shadow: 4px 4px 0 #e5cedf; transform: none; }
+  .step-people .person-card > span { border-style: dashed; background: #f2edf4; }
+  .send-screen > .sending-icon { display: none; }
+  .send-screen > .text-picture pre { font-size: 15px; animation: ascii-drift 2s steps(4,end) infinite; }
+  .send-screen > .text-picture { margin-bottom: 15px; }
+  .standalone-completion, .history-card, .empty { border: 1px dashed #b6a6b8; box-shadow: 4px 4px 0 #eadcea; }
+  .standalone-completion .success-symbol { background: #f3d5ed; border-style: dashed; }
+  .standalone-completion .receipt { background: #faf4fa; border: 1px dashed #b6a6b8; }
+  footer { border-top: 1px dashed #b9abb9; color: #8c7d90; }
+}
+@keyframes ascii-blink { 50% { opacity: 0; } }
+@keyframes ascii-spark { 50% { opacity: .3; transform: translateX(3px); } }
+@keyframes ascii-drift { 50% { transform: translateY(-5px); } }
+@media (prefers-reduced-motion: reduce) { .ascii-spark, .ascii-cursor, .send-screen > .text-picture pre { animation: none; } }

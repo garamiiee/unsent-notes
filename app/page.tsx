@@ -17,6 +17,59 @@ const people = [
   { name: '전 연인', emoji: '🥀', detail: '이제는 보내줄 마음', hint: '그때는 못 했던 말인데, 나도 참 많이 애썼어.', reply: '이 편지는 잘 도착했어. 이제 네 하루의 주인공은 너였으면 좋겠어. 엔딩 크레딧은 여기까지. 🌿' },
   { name: '친구', emoji: '🧃', detail: '가까워서 못 했던 말', hint: '인스타 올리기 전에 제발 카톡 먼저 확인해라ㅠㅠ', reply: '카톡 알림보다 양심 알림이 먼저 울렸다… 지금 확인했어. 다음 커피는 내가 살게. ☕' },
 ];
+
+const textPictures: Record<string, string> = {
+  chat: `   .--------------------.
+   |  o o o      ONLINE |
+   |--------------------|
+   |                    |
+   |  .------------.    |
+   |  | hello ...  |    |
+   |  '----------.-'    |
+   |          .--------.|
+   |          | <3  <3 ||
+   |          '-.------'|
+   |  > _               |
+   '--------------------'`,
+  mail: `           . + .
+       +           *
+    ____________________
+   /\\                  /\\
+  /  \\     FOR YOU    /  \\
+ /    \\              /    \\
+|      \\    <3      /      |
+|       \\          /       |
+|        \\________/        |
+|       /          \\       |
+|______/____________\\______|
+           ... -->`,
+  official: `      .----------------.
+      |  NO. 001       |
+      |----------------|
+      |                |
+      |  TO: YOU       |
+      |  ============  |
+      |  ============  |
+      |  ========      |
+      |          .---. |
+      |          | O | |
+      |__________'---'_| 
+           [ SENT ]`,
+  report: `    __________________
+   |  .---------------|.
+   |  |  HEART REPORT | |
+   |  |---------------| |
+   |  |               | |
+   |  |  01. _______  | |
+   |  |      _______  | |
+   |  |  02. _______  | |
+   |  |      _______  | |
+   |  |               | |
+   |__|_______________| |
+      '-----------------'`,
+};
+function TextPicture({ theme }: { theme: string }) { return <div className="text-picture" aria-hidden="true"><span className="ascii-spark">+ . * . +</span><pre>{textPictures[theme]}</pre><span className="ascii-caption">{theme === 'chat' ? 'connection established' : theme === 'mail' ? 'a little courage, enclosed' : theme === 'official' ? 'your feelings are valid' : 'everything left unsaid'}<span className="ascii-cursor">_</span></span></div>; }
+
 type Entry = { id: string; theme: string; person: string; message: string; reply: string; date: string };
 const KEY = 'unsent-heart-history-v1';
 export default function Home() {
@@ -95,7 +148,7 @@ export default function Home() {
         <ol className="journey-progress" aria-label="전달 단계">{['전달 방식', '상대 선택', '진심 작성', '전달 중', '전달 완료'].map((label, i) => { const active = stage === 'sending' ? 3 : stage === 'done' ? 4 : step; return <li key={label} aria-current={i === active ? 'step' : undefined} className={i <= active ? 'reached' : ''}><span>{i < active ? <Check size={13} /> : i + 1}</span><b>{label}</b></li>; })}</ol>
         {stage === 'compose' && <>
           <section className="step-heading"><div className="eyebrow">STEP 0{step + 1} / 05</div><h1 ref={headingRef} tabIndex={-1}>{['어떤 방식으로 전할까요?', '누구에게 전하고 싶나요?', '이제, 진심을 꺼내보세요.'][step]}</h1><p className="intro">{['오늘의 마음에 어울리는 전달 방식을 골라주세요.', '이름만 떠올려도 하고 싶은 말이 있죠.', `${t.name} · ${p.name}에게 보내는 가상의 진심`][step]}</p></section>
-          {step === 0 && <RadioGroup value={theme} onValueChange={v => setTheme(String(v))} aria-label="전달 방식" className="step-themes">{themes.map(item => { const I = item.icon; return <label key={item.id} className={`theme-card ${theme === item.id ? 'selected' : ''}`}><span className="theme-icon"><I size={30} /></span><span className="theme-copy"><strong>{item.name}</strong><small>{item.caption}</small></span><RadioGroupItem value={item.id} aria-label={item.name} /><span className="theme-preview-label">{item.id === 'chat' ? '익숙한 채팅방에서 가볍게' : item.id === 'mail' ? '제목부터 꾹 눌러 담아' : item.id === 'report' ? '마음을 차근차근 정리해서' : '정중하지만 확실하게'}</span></label>; })}</RadioGroup>}
+          {step === 0 && <RadioGroup value={theme} onValueChange={v => setTheme(String(v))} aria-label="전달 방식" className="step-themes">{themes.map(item => { const I = item.icon; return <label key={item.id} className={`theme-card ${theme === item.id ? 'selected' : ''}`}><span className="theme-icon"><I size={30} /></span><TextPicture theme={item.id} /><span className="theme-copy"><strong>{item.name}</strong><small>{item.caption}</small></span><RadioGroupItem value={item.id} aria-label={item.name} /><span className="theme-preview-label">{item.id === 'chat' ? '익숙한 채팅방에서 가볍게' : item.id === 'mail' ? '제목부터 꾹 눌러 담아' : item.id === 'report' ? '마음을 차근차근 정리해서' : '정중하지만 확실하게'}</span></label>; })}</RadioGroup>}
           {step === 1 && <RadioGroup value={person} onValueChange={v => setPerson(String(v))} aria-label="받는 상대" className="step-people">{people.map(item => <label key={item.name} className={`person-card ${person === item.name ? 'selected' : ''}`}><span aria-hidden="true">{item.emoji}</span><strong>{item.name}</strong><small>{item.detail}</small><RadioGroupItem value={item.name} aria-label={item.name} /></label>)}</RadioGroup>}
           {step === 2 && <div className={`authentic-editor authentic-${theme}`}>
             {theme === 'chat' ? <>
@@ -115,7 +168,7 @@ export default function Home() {
           </div>}
           <div className="step-actions"><button className="secondary" onClick={() => setStep(n => n - 1)} disabled={step === 0}><ArrowLeft size={16} />이전</button><span><LockKeyhole size={13} />실제로는 전달되지 않아요</span>{step < 2 ? <button className="primary" onClick={() => setStep(n => n + 1)}>다음 <ArrowRight size={17} /></button> : <button className="primary" onClick={send} disabled={!loaded || !message.trim()}>{t.action}<Send size={17} /></button>}</div>
         </>}
-        {stage === 'sending' && <section className={`send-screen send-screen-${theme}`} role="status"><div className={`sending-icon sending-${theme}`}><Icon size={56} /></div>{theme === 'chat' ? <div className="sent-bubble"><span>{progress < 2 ? '1' : '읽음'}</span><p>{message}</p></div> : <div className={`transit-document transit-${theme}`}><strong>{theme === 'mail' ? subject : theme === 'official' ? '공문 접수' : '보고서 결재'}</strong><p>{message}</p>{progress === 2 && <b className="received-stamp">{theme === 'mail' ? '발송 완료' : '접수 완료'}</b>}</div>}<h1>{t.steps[progress]}</h1><p>실제 발송 없이, 마음만 전하고 있어요.</p><div className="progress-dots">{t.steps.map((_, i) => <i key={i} className={i <= progress ? 'filled' : ''} />)}</div></section>}
+        {stage === 'sending' && <section className={`send-screen send-screen-${theme}`} role="status"><div className={`sending-icon sending-${theme}`}><Icon size={56} /></div><TextPicture theme={theme} />{theme === 'chat' ? <div className="sent-bubble"><span>{progress < 2 ? '1' : '읽음'}</span><p>{message}</p></div> : <div className={`transit-document transit-${theme}`}><strong>{theme === 'mail' ? subject : theme === 'official' ? '공문 접수' : '보고서 결재'}</strong><p>{message}</p>{progress === 2 && <b className="received-stamp">{theme === 'mail' ? '발송 완료' : '접수 완료'}</b>}</div>}<h1>{t.steps[progress]}</h1><p>실제 발송 없이, 마음만 전하고 있어요.</p><div className="progress-dots">{t.steps.map((_, i) => <i key={i} className={i <= progress ? 'filled' : ''} />)}</div></section>}
         {stage === 'done' && result && <section className="completion standalone-completion" aria-live="polite"><div className="success-symbol"><CheckCheck size={38} /></div><span className="eyebrow">DELIVERED, AT LAST</span><h1>드디어, 전했어요.</h1><p>오래 머물렀던 말이 마음 밖으로 나왔네요.<br />오늘의 나는 조금 더 가벼워져도 괜찮아요.</p><div className="receipt"><div><span>TO. {result.person}</span><span>가상 전달 완료 <Check size={13} /></span></div><blockquote>{result.message}</blockquote></div>{showReply ? <div className="reply"><span><Sparkles size={14} />상상 속 답장 · 실제 반응이 아니에요</span><p>{result.reply}</p></div> : <button className="reaction-button" onClick={() => setShowReply(true)}><Sparkles size={16} />상상 속 반응 보기</button>}<div className="result-actions"><button className="secondary" onClick={() => save(result)}>텍스트로 저장</button><button className="primary" onClick={reset}>다른 진심 보내기 <Plus size={17} /></button></div><small>기록은 마음 보관함에서 다시 볼 수 있어요.</small></section>}
       </div></>}
       {notice && <div className="notice" role="status">{notice}<button aria-label="알림 닫기" onClick={() => setNotice('')}><X size={16} /></button></div>}</main><footer><span>전하지 못한 진심 <span className="footer-dot">·</span> 마음을 위한 작은 연습</span><span>실제 발송 0건. 꺼내본 마음은 그 이상.</span></footer></div>;
