@@ -144,3 +144,16 @@ main { max-width:1240px; margin:auto; padding:48px 40px 50px; min-height:calc(10
 @keyframes ascii-spark { 50% { opacity: .3; transform: translateX(3px); } }
 @keyframes ascii-drift { 50% { transform: translateY(-5px); } }
 @media (prefers-reduced-motion: reduce) { .ascii-spark, .ascii-cursor, .send-screen > .text-picture pre { animation: none; } }
+
+@font-face { font-family: 'Pretendard Variable'; src: url('/fonts/PretendardVariable.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+/* Product typography; authentic editors and fixed-width drawings retain their own type. */
+.app-shell :is(h1,h2,h3,p,span,small,strong,b,a,button,label,input,textarea,summary,time,blockquote,li,div,section,article,nav,header,main,ol,details):not(.authentic-editor, .authentic-editor *, .text-picture, .text-picture *) {
+  font-family: 'Pretendard Variable', Pretendard, sans-serif;
+  letter-spacing: -.05em;
+}
+.authentic-editor { font-family: Arial, 'Malgun Gothic', sans-serif; letter-spacing: normal; }
+.text-picture pre { font-family: 'Courier New', monospace; letter-spacing: 0; }
+.step-actions { justify-content: space-between; }
+.step-themes .theme-card { min-height: 280px; }
+.step-themes .theme-copy { flex: 0; }
+@media(max-width:700px) { .step-themes .theme-card { min-height: 120px; } }
