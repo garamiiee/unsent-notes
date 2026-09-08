@@ -6,7 +6,9 @@
 
 ## Demo
 
-서비스: [전하지 못한 진심](https://unsent-heart-notes.khnpkim.chatgpt.site)
+서비스: [전하지 못한 진심](https://unsent-notes-six.vercel.app/)
+
+소스 코드: [GitHub](https://github.com/garamiiee/unsent-notes)
 
 ## About the project
 
