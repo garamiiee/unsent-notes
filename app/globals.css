@@ -215,3 +215,5 @@ textarea:focus-visible { outline-color: #a58ab180; }
  .step-actions .primary.mail-primary:hover:not(:disabled) { background: #0847ae; }
 }
 .theme-photo[src$="official.png"] { filter: grayscale(1); }
+.archive-access { display:flex; justify-content:center; margin:28px auto 0; } .archive-access button { display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:10px 16px; color:#795388; font-size:14px; border-radius:8px; } .archive-access button:hover:not(:disabled) { background:#eee5f2; }
+.journey-progress .reached { color:#795388; } .journey-progress .reached>span { background:#eee5f2; } .journey-progress [aria-current]>span { background:#89649a; color:#fff; }

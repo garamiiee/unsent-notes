@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowLeft, ArrowRight, Check, CheckCheck, FileText, Heart, History, LockKeyhole, Mail, MessageSquare, MoreHorizontal, PenLine, Plus, Send, ShieldCheck, Sparkles, Trash2, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, CheckCheck, FileText, History, LockKeyhole, Mail, MessageSquare, PenLine, Plus, Send, Sparkles, Trash2, X } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 const themes = [
@@ -86,7 +86,6 @@ export default function Home() {
   function send() { if (!loaded || !message.trim() || sending.current || stage !== 'compose') return; sending.current = true; setProgress(0); setShowReply(false); setStage('sending'); }
   function reset() { setStep(0); setMessage(''); setResult(null); setShowReply(false); setStage('compose'); setView('write'); }
   return <div className="app-shell">
-    <header className="topbar"><a className="brand" href="/" aria-label="전하지 못한 진심 홈"><span className="brand-icon"><Send size={21} /></span><span>전하지 못한 진심<small>THE UNSENT CLUB</small></span></a><nav aria-label="메인 메뉴"><button className={view === 'history' ? 'active' : ''} onClick={() => setView('history')} disabled={stage === 'sending'}><History size={16} />마음 보관함<span className="count">{entries.length}</span></button></nav></header>
     <main>{view === 'history' ? <section className="history-page"><h1>보관함</h1><p className="intro">기록은 이 브라우저에 저장됩니다.</p><button className="text-button" onClick={() => setView('write')}><ArrowLeft size={16} />작성 화면으로</button>{entries.length === 0 ? <div className="empty"><Mail size={42} /><h2>저장된 기록이 없습니다</h2><button className="primary" onClick={reset}>작성하기 <ArrowRight size={17} /></button></div> : <div className="history-list">{entries.map(e => <article className="history-card" key={e.id}><div className="history-meta"><span>{themes.find(x => x.id === e.theme)?.name} · {e.person}에게</span><time>{new Date(e.date).toLocaleDateString('ko-KR')}</time></div><p className="saved-message">{e.message}</p><details><summary>가상 반응 보기</summary><p>{e.reply}</p></details><div className="history-actions"><button aria-label={`${e.person}에게 보낸 기록 삭제`} onClick={() => setEntries(prev => prev.filter(x => x.id !== e.id))}><Trash2 size={15} />삭제</button></div></article>)}</div>}</section> : <>
       <div className="journey" data-screen={stage === 'compose' ? step : stage}>
         <ol className="journey-progress" aria-label="전달 단계">{['전달 방식', '상대 선택', '진심 작성', '전달 중', '전달 완료'].map((label, i) => { const active = stage === 'sending' ? 3 : stage === 'done' ? 4 : step; return <li key={label} aria-current={i === active ? 'step' : undefined} className={i <= active ? 'reached' : ''}><span>{i < active ? <Check size={13} /> : i + 1}</span><b>{label}</b></li>; })}</ol>
@@ -114,6 +113,6 @@ export default function Home() {
         </>}
         {stage === 'sending' && <section className={`send-screen send-screen-${theme}`} role="status"><div className={`sending-icon sending-${theme}`}><Icon size={56} /></div>{theme === 'chat' ? <div className="sent-bubble"><span>{progress < 2 ? '1' : '읽음'}</span><p>{message}</p></div> : <div className={`transit-document transit-${theme}`}><strong>{theme === 'mail' ? subject : theme === 'official' ? '공문 접수' : '보고서 결재'}</strong><p>{message}</p>{progress === 2 && <b className="received-stamp">{theme === 'mail' ? '발송 완료' : '접수 완료'}</b>}</div>}<h1>{t.steps[progress]}</h1><div className="progress-dots">{t.steps.map((_, i) => <i key={i} className={i <= progress ? 'filled' : ''} />)}</div></section>}
         {stage === 'done' && result && <section className="completion standalone-completion" aria-live="polite"><div className="success-symbol"><CheckCheck size={38} /></div><h1>전달 완료</h1><div className="receipt"><div><span>TO. {result.person}</span><span>전달 완료 <Check size={13} /></span></div><blockquote>{result.message}</blockquote></div>{showReply ? <div className="reply"><span><Sparkles size={14} />답장</span><p>{result.reply}</p></div> : <button className="reaction-button" onClick={() => setShowReply(true)}><Sparkles size={16} />반응 보기</button>}<div className="result-actions"><button className="primary" onClick={reset}>새로 작성 <Plus size={17} /></button></div></section>}
-      </div></>}
+        <div className="archive-access"><button onClick={() => setView('history')} disabled={stage === 'sending'}><History size={16} />마음 보관함 <span>{entries.length}</span></button></div></div></>}
       {notice && <div className="notice" role="status">{notice}<button aria-label="알림 닫기" onClick={() => setNotice('')}><X size={16} /></button></div>}</main></div>;
 }
